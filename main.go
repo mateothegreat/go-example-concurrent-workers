@@ -27,10 +27,16 @@ type Result struct {
 func worker(id int, jobs <-chan string, results chan<- Result, resultsWg *sync.WaitGroup) {
 	log.Printf("Worker %d started, waiting for jobs...", id)
 	for job := range jobs {
-		// Process the job (dummy processing here)
+		//
+		// Your business logic here...
+		//
 		time.Sleep(time.Duration(1+rand.Intn(3000)) * time.Millisecond)
+
+		// Send the result to the results channel to be processed by the main goroutine.
 		results <- Result{Message: fmt.Sprintf("Worker %d processed job: %s", id, job)}
-		resultsWg.Done() // Mark the result as done
+
+		// Tell the results wait group that this single job is done.
+		resultsWg.Done()
 	}
 }
 
