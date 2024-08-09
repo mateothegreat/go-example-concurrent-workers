@@ -2,11 +2,11 @@
 
 This is a simple example of concurrent worker scheduling using goroutines and channels.
 
-## Example
+## Usage
 
 This scheduler is configured to run 10 jobs concurrently with a total of 10 workers.
 
-See [main.go#L14-L19](main.go#L14-L19) for the settings:
+See [main.go#L12-L17](main.go#L14-L19) for the settings:
 
 ```go
 var (
@@ -16,6 +16,10 @@ var (
   totalJobs = 10
 )
 ```
+
+See [main.go#L30-L35](main.go#L30-L33) for where you can add your business logic.
+
+## Example
 
 ```bash
 $ go run main.go
